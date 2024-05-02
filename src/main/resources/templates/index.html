@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>初期画面</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<main class="container">
+		<section class="border p-1 mb-3">
+			<form method="post" th:action="@{/input}" th:object="${sampleForm}">
+				<div class="mb-3">
+					<label for="text" class="form-label">文字列（空でない、10文字以下）</label>
+					<input type="text" class="form-control" th:errorclass="is-invalid" th:field="*{text}">
+					<p class="invalid-feedback" th:errors="*{text}"></p>
+				</div>
+				<div class="mb-3">
+					<label for="integer" class="form-label">整数（整数、1以上10以下、空白NG）</label>
+					<input type="text" class="form-control" th:errorclass="is-invalid" th:field="*{integer}">
+					<p class="invalid-feedback" th:errors="*{integer}"></p>
+				</div>
+				<div>
+					<button type="submit" class="btn btn-primary">送信</button>
+				</div>
+			</form>
+		</section>
+	</main>
+</body>
+</html>
